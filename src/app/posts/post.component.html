@@ -1,0 +1,9 @@
+<h1>Latest Posts</h1>
+
+<div class="post-container" *ngFor="let post of posts">
+    <h3 class="post-heading">{{post.title}}</h3>
+
+    <p class="post-body">{{post.body}}</p>
+</div>
+
+<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>

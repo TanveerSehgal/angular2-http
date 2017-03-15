@@ -1,5 +1,13 @@
 <h1>Latest Posts</h1>
 
+<form class="post-form" (submit)="createPost({title: newTitle.value, body: newBody.value})">
+    <input #newTitle type="text" name="title" placeholder="Post Title" required>
+
+    <input #newBody type="text" name="body" placeholder="Post Body">
+
+    <input type="submit" value="Submit Post">
+</form>
+
 <div class="post-container" *ngFor="let post of posts">
     <h3 class="post-heading">{{post.title}}</h3>
 

@@ -25,4 +25,13 @@ export class PostComponent implements OnInit {
                 error => this.errorMessage = <any>error
             )
     }
+
+    createPost(post: Post) {
+        if (!post.title) return;
+        this.postService.addPost(post)
+            .subscribe(
+                newPost => this.posts = [newPost, ...this.posts],
+                error => this.errorMessage = <any>error
+            )
+    }
 }

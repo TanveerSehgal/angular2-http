@@ -22,8 +22,23 @@ export class PostService {
             .catch(this.handleError);
     }
 
+    addPost (post: Post): Observable<Post> {
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers});
+
+        return this.http.post(this.postUrl, { post }, options)
+            .map(this.parseData)
+            .catch(this.handleError);
+    }
+
     private parseData(res: Response)  {
-        return res.json() || [];
+        let body = res.json();
+
+        if (body instanceof Array) {
+            return body || [];
+        }
+
+        else return body.post || {};
     }
 
     // Prases error based on the format
